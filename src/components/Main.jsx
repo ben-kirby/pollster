@@ -1,5 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Main extends React.Component {
