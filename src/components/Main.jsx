@@ -9,7 +9,7 @@ class Main extends React.Component {
       <div>
         <div>
           <button>New Poll</button>
-          
+          <Link to='/new'>New Poll</Link>
         </div>
         <div>
           <input type="text" placeholder="Enter Poll Code" />
