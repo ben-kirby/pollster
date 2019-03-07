@@ -13,6 +13,7 @@
   "author": "Ben Kirby",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^5.8.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.6",
