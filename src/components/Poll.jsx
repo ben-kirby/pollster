@@ -13,8 +13,6 @@ class Poll extends React.Component{
       pollID: this.props.location.pathname.replace(/[/]/g, ""),
       pollFound: false,
     };
-    
-    
   }
 
   componentWillMount() {
@@ -22,8 +20,11 @@ class Poll extends React.Component{
     dispatch(getFirebasePoll(this.state.pollID));
   }
 
-  componentWillReceiveProps(){
-    console.log(this.props);
+  componentDidUpdate(){
+    if (this.props.pollInfo.poll) {
+      this.setState
+      
+    }
     
   }
   
