@@ -1,10 +1,12 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import { v4 } from 'uuid';
-import shortid from 'shortid'
+import shortid from 'shortid';
+import { addPoll } from './../actions';
+import { connect } from 'react-redux';
 
 import InputField from './Reusable/InputField';
-import Button from './Reusable/Button'
+import Button from './Reusable/Button';
 
 class NewPoll extends React.Component {
   constructor(props) {
@@ -13,9 +15,9 @@ class NewPoll extends React.Component {
       pollName: '',
       options: ['', ''],
     };
+    this.generateShortID = this.generateShortID.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.generateShortID = this.generateShortID.bind(this);
   }
 
   generateShortID(){
@@ -30,18 +32,21 @@ class NewPoll extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    let newName = e.target.name.value;
+    const { dispatch } = props;
     let newOptions = [];
     for (let index = 0; index < this.state.options.length; index++) {
-      newOptions.push(document.getElementById(index).value)
+      newOptions.push(document.getElementById(index).value);
     }
-    this.setState({
-      pollName: newName,
-      options: newOptions
-    });
 
-    let id = shortid.generate()
-    console.log(id)    
+
+
+    let newPollInfo = {
+      name: e.target.name.value,
+      options: newOptions,
+      id: shortid.generate()
+    };
+    console.log(newPollInfo);
+    
   }
 
   render() {
@@ -79,4 +84,4 @@ class NewPoll extends React.Component {
   }
 }
 
-export default NewPoll;
+export default connect()(NewPoll);
