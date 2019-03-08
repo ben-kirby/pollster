@@ -20,16 +20,19 @@ class Poll extends React.Component{
     const { dispatch } = this.props;
     const { getFirebasePoll } = actions;
     this.setState({pollInfo: dispatch(actions.getFirebasePoll(this.state.pollID)) });
-    console.log(this.state.pollInfo);
     
   }
   
-  render(){   
+  render(){  
+     
     let initialRender;
     if (this.state.pollFound === false) {
       initialRender = (
         <div>
           Loading...
+          <p>
+            {this.state.pollInfo}
+          </p>
         </div>
       );
     } else {
