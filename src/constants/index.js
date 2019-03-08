@@ -1,5 +1,5 @@
-import firebase from './firebase'
+import firebaseConfig from './firebase';
 
 export default {
-  firebase: firebase,
+  firebaseConfig: firebaseConfig,
 };

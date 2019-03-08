@@ -1,4 +1,4 @@
-const config = {
+const firebaseConfig = {
   apiKey: 'AIzaSyDMCM_y4ZuSTfLx6GgnWhc74fPRDji3SOs',
   authDomain: 'pollster-d01ec.firebaseapp.com',
   databaseURL: 'https://pollster-d01ec.firebaseio.com',
@@ -7,4 +7,4 @@ const config = {
   messagingSenderId: '944464996975'
 };
 
-export default config;
+export default firebaseConfig;

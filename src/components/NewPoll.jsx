@@ -32,7 +32,7 @@ class NewPoll extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const { dispatch } = props;
+    const { dispatch } = this.props;
     let newOptions = [];
     for (let index = 0; index < this.state.options.length; index++) {
       newOptions.push(document.getElementById(index).value);
