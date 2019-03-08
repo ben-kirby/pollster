@@ -12,6 +12,8 @@ class Poll extends React.Component{
     this.state = {
       pollID: this.props.location.pathname.replace(/[/]/g, ""),
       pollFound: false,
+      pollName: null,
+      pollOptions: null
     };
   }
 
@@ -20,9 +22,14 @@ class Poll extends React.Component{
     dispatch(getFirebasePoll(this.state.pollID));
   }
 
+
   componentDidUpdate(){
-    if (this.props.pollInfo.poll) {
-      this.setState
+    if (this.state.pollFound === false) {      
+      this.setState({
+        pollName: this.props.pollInfo.poll.name,
+        pollOptions: this.props.pollInfo.poll.options,
+        pollFound: true,
+      });
       
     }
     
@@ -35,13 +42,13 @@ class Poll extends React.Component{
       initialRender = (
         <div>
           Loading...
-          {this.state.test}
+          {this.state.pollName}
         </div>
       );
     } else {
       initialRender = (
         <div>
-          Found something!
+          {this.state.pollName}
         </div>
       );
     }
