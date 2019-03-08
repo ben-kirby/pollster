@@ -9,7 +9,9 @@ import thunkMiddleware from 'redux-thunk';
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
+// eslint-disable-next-line no-unused-vars
 let unsubscribe = store.subscribe(() =>
+  // eslint-disable-next-line no-console
   console.log(store.getState())
 );
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function InputField(props){
-  return(
-    <input 
+function InputField(props) {
+  return (
+    <input
       name={props.name}
       id={props.id}
-      type={props.type} 
+      type={props.type}
       placeholder={props.placeholder}
       onChange={props.onChange}
-       />
+    />
   );
 }
 

@@ -4,6 +4,8 @@ import { v4 } from 'uuid';
 import shortid from 'shortid';
 import { addPoll } from './../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 import InputField from './Reusable/InputField';
 import Button from './Reusable/Button';
@@ -12,7 +14,6 @@ class NewPoll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pollName: '',
       options: ['', ''],
     };
     this.generateShortID = this.generateShortID.bind(this);
@@ -37,18 +38,12 @@ class NewPoll extends React.Component {
     for (let index = 0; index < this.state.options.length; index++) {
       newOptions.push(document.getElementById(index).value);
     }
-
-
-
     let newPollInfo = {
       name: e.target.name.value,
       options: newOptions,
       id: shortid.generate()
     };
-    console.log(newPollInfo);
-
     dispatch(addPoll(newPollInfo));
-    
   }
 
   render() {
@@ -62,7 +57,7 @@ class NewPoll extends React.Component {
           />
           <label>Options:</label>
           <div>
-            {this.state.options.map((option, index) =>
+            {this.state.options.map((index) =>
               <InputField
                 id={index}
                 type='text'
@@ -85,5 +80,10 @@ class NewPoll extends React.Component {
     );
   }
 }
+
+NewPoll.propTypes = {
+  dispatch: PropTypes.func,
+};
+
 
 export default connect()(NewPoll);

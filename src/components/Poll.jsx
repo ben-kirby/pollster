@@ -1,11 +1,32 @@
-import React from 'react'
+/* eslint-disable react/prefer-stateless-function */
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function Poll(){
-  return(
-    <div>
-      Hello
-    </div>
-  );
+
+class Poll extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      pollID: this.props.location.pathname.replace(/[/]/g, "")
+    };
+  }
+
+
+
+
+  render(){    
+    
+    return(
+      <div>
+
+        hello
+      </div>
+    );
+  }
 }
 
-export default Poll
+Poll.propTypes = {
+  location: PropTypes.object,
+};
+
+export default Poll;
