@@ -1,8 +1,8 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as actions from './../actions';
 import { connect } from 'react-redux';
+import { getFirebasePoll } from '../actions/index'
 
 
 
@@ -10,7 +10,6 @@ class Poll extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      pollInfo: null,
       pollID: this.props.location.pathname.replace(/[/]/g, ""),
       pollFound: false,
     };
@@ -18,18 +17,18 @@ class Poll extends React.Component{
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const { getFirebasePoll } = actions;
-    this.setState({pollInfo: dispatch(actions.getFirebasePoll(this.state.pollID)) });
-    
+    dispatch(getFirebasePoll(this.state.pollID));
   }
   
   render(){  
+    let poll = this.props.pollInfo;
      
     let initialRender;
     if (this.state.pollFound === false) {
       initialRender = (
         <div>
           Loading...
+          {poll}
           <p>
             {this.state.pollInfo}
           </p>
@@ -52,8 +51,14 @@ class Poll extends React.Component{
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    pollInfo: state.pollInfo
+  };
+};
+
 Poll.propTypes = {
   location: PropTypes.object,
 };
 
-export default connect()(Poll);
+export default connect(mapStateToProps)(Poll);

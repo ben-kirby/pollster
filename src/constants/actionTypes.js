@@ -1,0 +1,1 @@
+export const RECEIVE_TICKET = 'RECEIVE_TICKET';

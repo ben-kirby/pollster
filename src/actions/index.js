@@ -16,14 +16,14 @@ export function getFirebasePoll(_pollId) {
   const polls = firebase.database().ref('polls/' + _pollId);
   return function(dispatch) {
     polls.on('value', function (snap) {
-      dispatch(JSON.parse(JSON.stringify(snap.val())));
+      dispatch(receivePoll(JSON.parse(JSON.stringify(snap.val()))));
     });
   };
 }
 
 function receivePoll(pollFromFirebase) {
   return {
-    type: c.RECEIVE_POLL,
+    type: 'RECEIVE_POLL',
     poll: pollFromFirebase
   };
 }
