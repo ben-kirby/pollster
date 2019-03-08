@@ -8,7 +8,6 @@ class Main extends React.Component {
     return (
       <div>
         <div>
-          <button>New Poll</button>
           <Link to='/new'>New Poll</Link>
         </div>
         <div>
