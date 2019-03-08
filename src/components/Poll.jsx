@@ -14,24 +14,27 @@ class Poll extends React.Component{
       pollFound: false,
     };
     
+    
   }
 
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(getFirebasePoll(this.state.pollID));
   }
+
+  componentWillReceiveProps(){
+    console.log(this.props);
+    
+  }
   
   render(){  
-    console.log('props', this.props.poll);
     
     let initialRender;
     if (this.state.pollFound === false) {
       initialRender = (
         <div>
           Loading...
-          <p>
-            {this.state.pollInfo}
-          </p>
+          {this.state.test}
         </div>
       );
     } else {
@@ -53,7 +56,7 @@ class Poll extends React.Component{
 
 const mapStateToProps = state => {  
   return {
-    poll: state.PollReducer.poll,
+    pollInfo: state.PollReducer.poll,
   };
 };
 
