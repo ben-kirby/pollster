@@ -3,13 +3,12 @@ const { firebaseConfig } = constants;
 import firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
-const polls = firebase.database().ref('polls');
 
 export function addPoll(_info){
+  const polls = firebase.database().ref('polls/' + _info.id);
   return () => polls.push({
-    name: _info.savePollName,
-    options: _info.saveOptions,
-    id: _info.saveShortID,
+    name: _info.name,
+    options: _info.options,
   });
 
 }

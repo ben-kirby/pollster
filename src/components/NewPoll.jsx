@@ -46,6 +46,8 @@ class NewPoll extends React.Component {
       id: shortid.generate()
     };
     console.log(newPollInfo);
+
+    dispatch(addPoll(newPollInfo));
     
   }
 
