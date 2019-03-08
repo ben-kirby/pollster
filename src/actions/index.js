@@ -12,11 +12,11 @@ export function addPoll(_info){
   });
 }
 
-export function watchFirebasePolls() {
-  return function(dispatch) {
-    polls.on('polls' , data => {
-      console.log(data);
-      
-    })
-  }
+export function getFirebasePoll(_pollId) {
+  return firebase.database().ref('polls/' + _pollId)
 }
+
+// export function watchFirebasePolls(_pollId) {
+//   const polls = firebase.database().ref('polls/' + _pollId);
+//   return polls.on('child_changed', function(data))
+// }
