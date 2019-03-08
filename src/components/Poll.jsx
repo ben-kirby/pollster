@@ -22,7 +22,6 @@ class Poll extends React.Component{
     dispatch(getFirebasePoll(this.state.pollID));
   }
 
-
   componentDidUpdate(){
     if (this.state.pollFound === false) {      
       this.setState({
@@ -30,21 +29,19 @@ class Poll extends React.Component{
         pollOptions: this.props.pollInfo.poll.options,
         pollFound: true,
       });
-      
     }
-    
   }
   
   render(){  
-    
     let initialRender;
+
     if (this.state.pollFound === false) {
       initialRender = (
         <div>
           Loading...
-          {this.state.pollName}
         </div>
       );
+
     } else {
       initialRender = (
         <div>
