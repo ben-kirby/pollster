@@ -22,14 +22,13 @@ class Poll extends React.Component{
   }
   
   render(){  
-    let poll = this.props.poll;
+    console.log('props', this.props.poll);
     
     let initialRender;
     if (this.state.pollFound === false) {
       initialRender = (
         <div>
           Loading...
-          {poll}
           <p>
             {this.state.pollInfo}
           </p>
@@ -52,11 +51,9 @@ class Poll extends React.Component{
   }
 }
 
-const mapStateToProps = state => {
-  console.log('state', state);
-  
+const mapStateToProps = state => {  
   return {
-    poll: state.PollReducer
+    poll: state.PollReducer.poll,
   };
 };
 
