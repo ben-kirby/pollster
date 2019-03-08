@@ -7,19 +7,34 @@ class Poll extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      pollID: this.props.location.pathname.replace(/[/]/g, "")
+      pollID: this.props.location.pathname.replace(/[/]/g, ""),
+      pollFound: false,
     };
   }
 
+  componentDidMount(){
 
-
-
-  render(){    
+  }
+  render(){   
+    let initialRender;
+    if (this.state.pollFound === false) {
+      initialRender = (
+        <div>
+          Loading...
+        </div>
+      );
+    } else {
+      initialRender = (
+        <div>
+          Found something!
+        </div>
+      );
+    }
     
     return(
       <div>
 
-        hello
+        {initialRender}
       </div>
     );
   }

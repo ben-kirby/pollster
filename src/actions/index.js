@@ -10,5 +10,13 @@ export function addPoll(_info){
     name: _info.name,
     options: _info.options,
   });
+}
 
+export function watchFirebasePolls() {
+  return function(dispatch) {
+    polls.on('polls' , data => {
+      console.log(data);
+      
+    })
+  }
 }
