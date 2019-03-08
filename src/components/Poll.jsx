@@ -13,6 +13,8 @@ class Poll extends React.Component{
   }
 
   componentDidMount(){
+    const { dispatch } = this.props;
+    const { watchFirebasePolls } = actions
 
   }
   render(){   

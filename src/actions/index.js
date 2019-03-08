@@ -5,8 +5,8 @@ import firebase from 'firebase';
 firebase.initializeApp(firebaseConfig);
 
 export function addPoll(_info){
-  const polls = firebase.database().ref('polls/' + _info.id);
-  return () => polls.push({
+  const polls = firebase.database().ref('polls/');
+  return () => polls.child(_info.id).set({
     name: _info.name,
     options: _info.options,
   });

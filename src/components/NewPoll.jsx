@@ -57,7 +57,7 @@ class NewPoll extends React.Component {
           />
           <label>Options:</label>
           <div>
-            {this.state.options.map((index) =>
+            {this.state.options.map((option, index) =>
               <InputField
                 id={index}
                 type='text'
