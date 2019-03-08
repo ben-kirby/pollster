@@ -13,6 +13,7 @@ class Poll extends React.Component{
       pollID: this.props.location.pathname.replace(/[/]/g, ""),
       pollFound: false,
     };
+    
   }
 
   componentWillMount() {
@@ -21,10 +22,8 @@ class Poll extends React.Component{
   }
   
   render(){  
-    let poll = this.props.pollInfo;
-    console.log(this.props.pollInfo);
+    let poll = this.props.poll;
     
-     
     let initialRender;
     if (this.state.pollFound === false) {
       initialRender = (
@@ -54,13 +53,14 @@ class Poll extends React.Component{
 }
 
 const mapStateToProps = state => {
+  console.log('state', state);
+  
   return {
-    pollInfo: state.pollInfo
+    poll: state.PollReducer
   };
 };
 
 Poll.propTypes = {
-  location: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(Poll);

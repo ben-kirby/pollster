@@ -1,5 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Main from './Main';
 import NewPoll from './NewPoll';
 import Poll from './Poll';
@@ -20,4 +22,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(connect()(App));
