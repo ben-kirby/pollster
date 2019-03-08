@@ -13,7 +13,15 @@ export function addPoll(_info){
 }
 
 export function getFirebasePoll(_pollId) {
-  return firebase.database().ref('polls/' + _pollId)
+  const polls = firebase.database().ref('polls/' + _pollId);
+  return () => polls.on('value', function(snap) {
+    console.log(snap);
+    
+    let pollInfo = {
+      name: snap.val;
+    }
+    
+  });
 }
 
 // export function watchFirebasePolls(_pollId) {

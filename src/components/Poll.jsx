@@ -18,7 +18,7 @@ class Poll extends React.Component{
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const { watchFirebasePolls } = actions;
+    const { getFirebasePoll } = actions;
     this.setState({pollInfo: dispatch(actions.getFirebasePoll(this.state.pollID)) });
     console.log(this.state.pollInfo);
     
