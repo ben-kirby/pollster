@@ -22,6 +22,8 @@ class Poll extends React.Component{
   
   render(){  
     let poll = this.props.pollInfo;
+    console.log(this.props.pollInfo);
+    
      
     let initialRender;
     if (this.state.pollFound === false) {
