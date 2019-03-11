@@ -25,6 +25,7 @@ _coming soon_
 - Can navigate to `/new` to create a new poll with unlimited options.
 - If the user knows the poll ID beforehand (not implemented into UI yet) they can navigate to `/*Short_ID*` and poll info will diplay.
 - Users can vote on polls.
+- After creating a poll, users get a link to it along with the poll code.
 
 ## Known Issues
 
@@ -35,11 +36,12 @@ _coming soon_
 - "Enter Poll Code" field on main screen does nothing.
 - Voting is not live updating. Have to refresh to see changes.
 - Users can vote as often as they want.
+- Link generated on poll submission doesnt go anywhere.
 
 ## What's Next
 
 - [x] Come up with a voting system.
 - [x] Get votes to update in the database.
 - [ ] Add UI/Styling
-- [ ] Return a poll ID upon creation of a new poll.
+- [x] Return a poll ID upon creation of a new poll.
 - [ ] Better navigation

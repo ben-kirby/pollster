@@ -3,8 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getFirebasePoll, updatePoll } from '../actions/index';
-import VoteButton from '../components/Reusable/VoteButton';
 import { v4 } from 'uuid';
+
+import VoteButton from '../components/Reusable/VoteButton';
+import Loading from '../assets/Loading.gif';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  background-color: tomato;
+`;
+
 
 class Poll extends React.Component {
   constructor(props) {
@@ -51,9 +59,9 @@ class Poll extends React.Component {
 
     if (this.state.pollFound === false) {
       initialRender = (
-        <div>
-          Loading...
-        </div>
+        <Container>
+          <img src={Loading}/>
+        </Container>
       );
 
     } else {

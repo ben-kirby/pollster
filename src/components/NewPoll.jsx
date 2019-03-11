@@ -5,6 +5,7 @@ import shortid from 'shortid';
 import { addPoll } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import InputField from './Reusable/InputField';
 import Button from './Reusable/Button';
@@ -103,7 +104,7 @@ class NewPoll extends React.Component {
     } else {
       initialRender = (
         <a href="">Your poll code is {this.state.shortID}</a>
-      )
+      );
     }
     return (
       <div>
