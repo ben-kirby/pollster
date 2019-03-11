@@ -6,7 +6,6 @@ import { addPoll } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-
 import InputField from './Reusable/InputField';
 import Button from './Reusable/Button';
 
@@ -14,6 +13,8 @@ class NewPoll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      formSubmitted: false,
+      shortID: null,
       options: [
         {
           optionName: '',
@@ -30,8 +31,11 @@ class NewPoll extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  generateShortID(){
-    return shortid.generate();
+  generateShortID() {
+    let newShortID = shortid.generate();
+    this.setState({ 
+      shortID: newShortID
+    });
   }
 
   handleAddOption() {
@@ -43,8 +47,10 @@ class NewPoll extends React.Component {
     this.setState({ options: newOptions });
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
+    this.generateShortID();
+    this.setState({ formSubmitted: true });
     const { dispatch } = this.props;
     let newOptions = [];
     for (let index = 0; index < this.state.options.length; index++) {
@@ -56,19 +62,21 @@ class NewPoll extends React.Component {
     let newPollInfo = {
       name: e.target.name.value,
       options: newOptions,
-      id: shortid.generate()
+      id: this.state.shortID
     };
     dispatch(addPoll(newPollInfo));
   }
 
+
   render() {
-    return (
-      <div>
+    let initialRender;
+    if (this.state.formSubmitted === false) {
+      initialRender = (
         <form onSubmit={this.handleSubmit}>
-          <InputField 
+          <InputField
             id='name'
             type='text'
-            placeholder='Poll Name' 
+            placeholder='Poll Name'
           />
           <label>Options:</label>
           <div>
@@ -76,12 +84,12 @@ class NewPoll extends React.Component {
               <InputField
                 id={index}
                 type='text'
-                key={v4()} 
+                key={v4()}
               />
             )}
           </div>
           <div>
-            <Button 
+            <Button
               onClick={this.handleAddOption}
               text="Add Option"
             />
@@ -91,6 +99,15 @@ class NewPoll extends React.Component {
             />
           </div>
         </form>
+      );
+    } else {
+      initialRender = (
+        <a href="">Your poll code is {this.state.shortID}</a>
+      )
+    }
+    return (
+      <div>
+        {initialRender}
       </div>
     );
   }

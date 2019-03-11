@@ -6,8 +6,6 @@ import { getFirebasePoll, updatePoll } from '../actions/index';
 import VoteButton from '../components/Reusable/VoteButton';
 import { v4 } from 'uuid';
 
-
-
 class Poll extends React.Component {
   constructor(props) {
     super(props);

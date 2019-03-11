@@ -24,15 +24,17 @@ _coming soon_
 
 - Can navigate to `/new` to create a new poll with unlimited options.
 - If the user knows the poll ID beforehand (not implemented into UI yet) they can navigate to `/*Short_ID*` and poll info will diplay.
+- Users can vote on polls.
 
 ## Known Issues
 
 - If a user goes to a URL path that does not correlate with an existing poll ID, there is no error, just sits on loading.
 - No way for users to retreive a poll ID once a poll is made.
-- Options do not display on poll screen.
 - No navigation buttons. Users have to know the URL or use back/forward buttons.
 - No UI.
 - "Enter Poll Code" field on main screen does nothing.
+- Voting is not live updating. Have to refresh to see changes.
+- Users can vote as often as they want.
 
 ## What's Next
 
