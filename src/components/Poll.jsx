@@ -6,12 +6,22 @@ import { getFirebasePoll, updatePoll } from '../actions/index';
 import { v4 } from 'uuid';
 
 import VoteButton from '../components/Reusable/VoteButton';
-import Loading from '../assets/Loading.gif';
+import Loading from '../assets/loading.svg';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  background-color: tomato;
-`;
+const styles = {
+  Container: styled.div`
+    background-color: tomato;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  `,
+  image: {
+    boxShadow: '10px 10px',
+  }
+};
+
+
 
 
 class Poll extends React.Component {
@@ -42,10 +52,10 @@ class Poll extends React.Component {
   }
 
   handleVote(e) {
-    const { dispatch } = this.props;    
+    const { dispatch } = this.props;
     let update = this.state.pollOptions;
     update[e.target.id].optionVotes = update[e.target.id].optionVotes + 1;
-    let updateInfo= {
+    let updateInfo = {
       id: this.state.pollID,
       name: this.state.pollName,
       options: update,
@@ -59,9 +69,9 @@ class Poll extends React.Component {
 
     if (this.state.pollFound === false) {
       initialRender = (
-        <Container>
-          <img src={Loading}/>
-        </Container>
+        <styles.Container>
+          <img src={Loading} />
+        </styles.Container>
       );
 
     } else {
@@ -86,9 +96,9 @@ class Poll extends React.Component {
     }
 
     return (
-      <div>
-        {initialRender}
-      </div>
+      <styles.Container>
+        <img src={Loading} />
+      </styles.Container>
     );
   }
 }

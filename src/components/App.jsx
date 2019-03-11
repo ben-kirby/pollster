@@ -6,6 +6,12 @@ import Main from './Main';
 import NewPoll from './NewPoll';
 import Poll from './Poll';
 
+const styles = {
+  container: `
+    
+  `,
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
