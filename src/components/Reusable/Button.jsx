@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 function Button(props) {
   return (
     <button
+      style={props.style}
       type={props.type}
       onClick={props.onClick}
       onSubmit={props.onSubmit}
@@ -15,6 +16,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
+  style: PropTypes.object,
   type: PropTypes.string,
   text: PropTypes.string,
   onSubmit: PropTypes.func,

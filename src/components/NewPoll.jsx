@@ -6,9 +6,88 @@ import { addPoll } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import WebFont from 'webfontloader';
 
 import InputField from './Reusable/InputField';
 import Button from './Reusable/Button';
+
+WebFont.load({
+  google: {
+    families: ['Josefin Sans:600i', 'sans-serif']
+  }
+});
+
+const styles = {
+  container: styled.div`
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #CED3DC;
+    height: 100vh;
+  `,
+  pollName: {
+    marginTop: '0.67em',
+    border: 'none',
+    padding: '5%',
+    borderRadius: '25rem',
+    fontSize: '3.75rem',
+    boxShadow: 'inset 4px 4px 0 0 rgba(17, 17, 31, 0.25)',
+    textAlign: 'center',
+    backgroundColor: '#FCF6EF',
+    color: '#275DAD'
+  },
+  pollForm: styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `,
+  options: styled.p`
+    font-size: 4rem;
+    font-family: Josefin Sans;
+    color: #ABA9C3
+  `,
+  optionForm: {
+    marginTop: '5px',
+    border: 'none',
+    padding: '3%',
+    borderRadius: '25rem',
+    fontSize: '2.25rem',
+    boxShadow: 'inset 4px 4px 0 0 rgba(17, 17, 31, 0.25)',
+    textAlign: 'center',
+    backgroundColor: '#FCF6EF',
+    color: '#275DAD'
+  },
+  buttonDiv: styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 5%;
+
+  `,
+  addButton: {
+    borderRight: 'none',
+    padding: '3%',
+    width: '50%',
+    marginRight: '0px',
+    textAlign: 'center',
+    flexGrow: '1',
+    backgroundColor: '#FCF6EF',
+    borderTopLeftRadius: '25rem',
+    borderBottomLeftRadius: '25rem',
+  },
+  submitButton: {
+    width: '50%',
+    padding: '3%',
+    backgroundColor: '#FCF6EF',
+    borderTopRightRadius: '25rem',
+    borderBottomRightRadius: '25rem',
+    marginLeft: '0px',
+    textAlign: 'center',
+    flexGrow: '1',
+  },
+};
 
 class NewPoll extends React.Component {
   constructor(props) {
@@ -34,7 +113,7 @@ class NewPoll extends React.Component {
 
   generateShortID() {
     let newShortID = shortid.generate();
-    this.setState({ 
+    this.setState({
       shortID: newShortID
     });
   }
@@ -68,48 +147,56 @@ class NewPoll extends React.Component {
     dispatch(addPoll(newPollInfo));
   }
 
-
   render() {
     let initialRender;
     if (this.state.formSubmitted === false) {
       initialRender = (
-        <form onSubmit={this.handleSubmit}>
-          <InputField
-            id='name'
-            type='text'
-            placeholder='Poll Name'
-          />
-          <label>Options:</label>
-          <div>
-            {this.state.options.map((option, index) =>
-              <InputField
-                id={index}
-                type='text'
-                key={v4()}
-              />
-            )}
-          </div>
-          <div>
-            <Button
-              onClick={this.handleAddOption}
-              text="Add Option"
+        <styles.container>
+          <styles.pollForm onSubmit={this.handleSubmit}>
+            <InputField
+              style={styles.pollName}
+              id='name'
+              type='text'
+              placeholder='Poll Name'
             />
-            <Button
-              type='submit'
-              text="Create New Poll"
-            />
-          </div>
-        </form>
+            <styles.options><em>-options-</em></styles.options>
+            <styles.container>
+              {this.state.options.map((option, index) =>
+                <InputField
+                  style={styles.optionForm}
+                  id={index}
+                  type='text'
+                  key={v4()}
+                />
+              )}
+              <styles.buttonDiv>
+                <Button
+                  style={styles.addButton}
+                  type='button'
+                  onClick={this.handleAddOption}
+                  text="Add Option"
+                />
+                <Button
+                  style={styles.submitButton}
+                  type='submit'
+                  text="Create New Poll"
+                />
+              </styles.buttonDiv>
+            </styles.container>
+          </styles.pollForm>
+        </styles.container>
       );
     } else {
       initialRender = (
-        <a href="">Your poll code is {this.state.shortID}</a>
+        <div>
+          <a href="">Your poll code is {this.state.shortID}</a>
+        </div>
       );
     }
     return (
-      <div>
+      <styles.container>
         {initialRender}
-      </div>
+      </styles.container>
     );
   }
 }
