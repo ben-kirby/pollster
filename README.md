@@ -36,8 +36,8 @@ _coming soon_
 
 ## What's Next
 
-- [ ] Come up with a voting system.
-- [ ] Get votes to update in the database.
+- [x] Come up with a voting system.
+- [x] Get votes to update in the database.
 - [ ] Add UI/Styling
 - [ ] Return a poll ID upon creation of a new poll.
 - [ ] Better navigation
