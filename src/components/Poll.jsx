@@ -2,19 +2,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getFirebasePoll } from '../actions/index'
+import { getFirebasePoll, updatePoll } from '../actions/index';
+import VoteButton from '../components/Reusable/VoteButton';
+import { v4 } from 'uuid';
 
 
 
-class Poll extends React.Component{
-  constructor(props){
+class Poll extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
-      pollID: this.props.location.pathname.replace(/[/]/g, ""),
+      pollID: this.props.location.pathname.replace(/[/]/g, ''),
       pollFound: false,
       pollName: null,
       pollOptions: null
     };
+    this.handleVote = this.handleVote.bind(this);
   }
 
   componentWillMount() {
@@ -22,8 +25,8 @@ class Poll extends React.Component{
     dispatch(getFirebasePoll(this.state.pollID));
   }
 
-  componentDidUpdate(){
-    if (this.state.pollFound === false) {      
+  componentDidUpdate() {
+    if (this.state.pollFound === false) {
       this.setState({
         pollName: this.props.pollInfo.poll.name,
         pollOptions: this.props.pollInfo.poll.options,
@@ -31,8 +34,21 @@ class Poll extends React.Component{
       });
     }
   }
-  
-  render(){  
+
+  handleVote(e) {
+    const { dispatch } = this.props;    
+    let update = this.state.pollOptions;
+    update[e.target.id].optionVotes = update[e.target.id].optionVotes + 1;
+    let updateInfo= {
+      id: this.state.pollID,
+      name: this.state.pollName,
+      options: update,
+    };
+
+    dispatch(updatePoll(updateInfo));
+  }
+
+  render() {
     let initialRender;
 
     if (this.state.pollFound === false) {
@@ -45,27 +61,42 @@ class Poll extends React.Component{
     } else {
       initialRender = (
         <div>
-          {this.state.pollName}
+          <div>
+            {this.state.pollName}
+          </div>
+          <ul>
+            {this.state.pollOptions.map((option, index) =>
+              <VoteButton
+                id={index}
+                name={option.optionName}
+                votes={option.optionVotes}
+                onClick={this.handleVote}
+                key={v4()}
+              />
+            )}
+          </ul>
         </div>
       );
     }
-    
-    return(
-      <div>
 
+    return (
+      <div>
         {initialRender}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {  
+const mapStateToProps = state => {
   return {
     pollInfo: state.PollReducer.poll,
   };
 };
 
 Poll.propTypes = {
+  dispatch: PropTypes.func,
+  pollInfo: PropTypes.object,
+  location: PropTypes.object
 };
 
 export default connect(mapStateToProps)(Poll);

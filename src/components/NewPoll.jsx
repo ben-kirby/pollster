@@ -14,7 +14,16 @@ class NewPoll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: ['', ''],
+      options: [
+        {
+          optionName: '',
+          optionVotes: 0,
+        },
+        {
+          optionName: '',
+          optionVotes: 0,
+        }
+      ],
     };
     this.generateShortID = this.generateShortID.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
@@ -27,7 +36,10 @@ class NewPoll extends React.Component {
 
   handleAddOption() {
     let newOptions = this.state.options;
-    newOptions.push(this.state.options.length);
+    newOptions.push({
+      optionName: '',
+      optionVotes: 0
+    });
     this.setState({ options: newOptions });
   }
 
@@ -36,7 +48,10 @@ class NewPoll extends React.Component {
     const { dispatch } = this.props;
     let newOptions = [];
     for (let index = 0; index < this.state.options.length; index++) {
-      newOptions.push(document.getElementById(index).value);
+      newOptions.push({
+        optionName: document.getElementById(index).value,
+        optionVotes: 0
+      });
     }
     let newPollInfo = {
       name: e.target.name.value,

@@ -21,11 +21,19 @@ export function getFirebasePoll(_pollId) {
   };
 }
 
-function receivePoll(pollFromFirebase) {
+export function receivePoll(_pollFromFirebase) {
   return {
     type: 'RECEIVE_POLL',
-    poll: pollFromFirebase
+    poll: _pollFromFirebase
   };
+}
+
+export function updatePoll(_updates) {
+  const poll = firebase.database().ref().child('polls');
+  return () => poll.child(_updates.id).update({
+    name: _updates.name,
+    options: _updates.options
+  });
 }
 
 // export function watchFirebasePolls(_pollId) {
