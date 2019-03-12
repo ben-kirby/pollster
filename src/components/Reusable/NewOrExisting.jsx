@@ -35,10 +35,13 @@ const styles = {
     textDecoration: 'none',
     color: '#275DAD'
   },
+  searchFormContainer: styled.div`
+    display: Flex
+  `,
 };
 
 function NewOrExisting(props) {
-  return(
+  return (
     <styles.Container>
       <styles.NewPollText>
         <Link style={styles.header} to='/new'><em>New Poll</em></Link>

@@ -26,14 +26,13 @@ _coming soon_
 - If the user knows the poll ID beforehand (not implemented into UI yet) they can navigate to `/*Short_ID*` and poll info will diplay.
 - Users can vote on polls.
 - After creating a poll, users get a link to it along with the poll code.
+- If a user goes to a bad URL it will prompt them to either make a new poll or search for another one.
+- Polls are searchable by their ID.
 
 ## Known Issues
 
-- If a user goes to a URL path that does not correlate with an existing poll ID, there is no error, just sits on loading.
 - No way for users to retreive a poll ID once a poll is made.
 - No navigation buttons. Users have to know the URL or use back/forward buttons.
-- No UI.
-- "Enter Poll Code" field on main screen does nothing.
 - Voting is not live updating. Have to refresh to see changes.
 - Users can vote as often as they want.
 - Link generated on poll submission doesnt go anywhere.
@@ -42,6 +41,6 @@ _coming soon_
 
 - [x] Come up with a voting system.
 - [x] Get votes to update in the database.
-- [ ] Add UI/Styling
+- [x] Add UI/Styling
 - [x] Return a poll ID upon creation of a new poll.
 - [ ] Better navigation
