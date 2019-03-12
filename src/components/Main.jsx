@@ -44,10 +44,22 @@ const styles = {
   header: {
     textDecoration: 'none',
     color: '#275DAD'
-  }
+  },
+  PollForm: styled.form`
+    display: flex;
+  `,
 };
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handlePollIdSubmit = this.handlePollIdSubmit.bind(this);
+  }
+
+  handlePollIdSubmit() {
+    event.preventDefault();
+    this.props.history.push('/' + document.getElementById('pollID').value);
+  }
 
   render() {
     return (
@@ -56,7 +68,9 @@ class Main extends React.Component {
           <Link style={styles.header} to='/new'><em>New Poll</em></Link>
         </styles.NewPollText>
         <styles.seperator><em>-or-</em></styles.seperator>
-        <styles.PollInput type="text" placeholder="Enter Poll Code" />
+        <styles.PollForm onSubmit={this.handlePollIdSubmit}>
+          <styles.PollInput id='pollID' type="text" placeholder="Enter Poll Code" />
+        </styles.PollForm>
       </styles.Container>
     );
   }

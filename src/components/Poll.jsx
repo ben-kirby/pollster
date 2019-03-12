@@ -22,14 +22,12 @@ const styles = {
 };
 
 
-
-
 class Poll extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pollID: this.props.location.pathname.replace(/[/]/g, ''),
-      pollFound: false,
+      pollSearched: false,
       pollName: null,
       pollOptions: null
     };
@@ -42,11 +40,11 @@ class Poll extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.pollFound === false) {
+    if (this.state.pollSearched === false) {
       this.setState({
         pollName: this.props.pollInfo.poll.name,
         pollOptions: this.props.pollInfo.poll.options,
-        pollFound: true,
+        pollSearched: true,
       });
     }
   }
@@ -67,7 +65,7 @@ class Poll extends React.Component {
   render() {
     let initialRender;
 
-    if (this.state.pollFound === false) {
+    if (this.state.pollSearched === false) {
       initialRender = (
         <styles.Container>
           <img src={Loading} />

@@ -46,7 +46,8 @@ const styles = {
   options: styled.p`
     font-size: 4rem;
     font-family: Josefin Sans;
-    color: #ABA9C3
+    color: #ABA9C3;
+    margin-bottom: 0px;
   `,
   optionForm: {
     marginTop: '5px',
@@ -67,6 +68,7 @@ const styles = {
 
   `,
   addButton: {
+    fontSize: '1.25rem',
     borderRight: 'none',
     padding: '3%',
     width: '50%',
@@ -78,6 +80,7 @@ const styles = {
     borderBottomLeftRadius: '25rem',
   },
   submitButton: {
+    fontSize: '1.25rem',
     width: '50%',
     padding: '3%',
     backgroundColor: '#FCF6EF',
