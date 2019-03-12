@@ -14,11 +14,16 @@ _Coming to firebase soon_
 
 ### UI
 
-_coming soon_
+#### Main
+
+#### New Poll
+
+#### Existing Poll
+
 
 ### Componenet Tree
 
-_coming soon_
+<img src='src/assets/componenttree.png'>
 
 ## Features
 
