@@ -19,13 +19,14 @@ WebFont.load({
 });
 
 const styles = {
+  generatedLink: {
+    fontSize: '2rem',
+  },
   container: styled.div`
     padding-top: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #CED3DC;
-    height: 100vh;
   `,
   pollName: {
     marginTop: '0.67em',
@@ -190,9 +191,11 @@ class NewPoll extends React.Component {
         </styles.container>
       );
     } else {
+      console.log(this.state.shortID);
       initialRender = (
+        
         <div>
-          <a href="">Your poll code is {this.state.shortID}</a>
+          <Link style={styles.generatedLink} to={`/${this.state.shortID}`}>Poll created! Here's your code: {this.state.shortID}</Link>
         </div>
       );
     }

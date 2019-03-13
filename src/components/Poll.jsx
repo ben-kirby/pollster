@@ -7,8 +7,6 @@ import WebFont from 'webfontloader';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
-import PollSearchForm from './Reusable/PollSearchForm';
 import VoteButton from '../components/Reusable/VoteButton';
 import Loading from '../assets/loading.svg';
 import NewOrExisting from './Reusable/NewOrExisting'
@@ -22,21 +20,16 @@ WebFont.load({
 const styles = {
   content: styled.div`
     display: flex;
-    padding-top: 5%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #CED3DC;
-    height: 100vh;
-
+    margin-top: 10%;
   `,
   Container: styled.div`
     background-color: #CED3DC;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-content: center;
-    padding-top: 5%;
     flex-direction: column;
   `,
   image: {
@@ -55,7 +48,12 @@ const styles = {
     font-size: 4rem;
     font-family: Josefin Sans;
     color: #ABA9C3
-
+  `,
+  pollName: styled.h1`
+    font-family: Josefin Sans;
+    color: #275DAD;
+    text-align: center;
+  
   `,
 };
 
@@ -66,10 +64,12 @@ class Poll extends React.Component {
       pollID: this.props.location.pathname.replace(/[/]/g, ''),
       pollSearched: false,
       pollName: null,
-      pollOptions: null
+      pollOptions: null,
+      totalVotes: 0
     };
     this.handleVote = this.handleVote.bind(this);
     this.handlePollIdSubmit = this.handlePollIdSubmit.bind(this);
+    this.getTotalVotes = this.getTotalVotes.bind(this);
   }
 
   componentWillMount() {
@@ -87,6 +87,7 @@ class Poll extends React.Component {
           pollOptions: this.props.pollInfo.poll.options,
           pollSearched: true
         });
+        this.getTotalVotes(this.props.pollInfo.poll.options);
       }
     }
   }
@@ -107,6 +108,15 @@ class Poll extends React.Component {
     event.preventDefault()
     this.props.history.push('/' + document.getElementById('pollID').value);
     window.location.reload();
+  }
+
+  getTotalVotes(poll) {
+    let votes = 0;
+    for (let index = 0; index < poll.length; index++) {
+      const element = poll[index].optionVotes;
+      votes += element;
+    }
+    this.setState({ totalVotes: votes });
   }
 
   render() {
@@ -136,31 +146,31 @@ class Poll extends React.Component {
 
 
       } else {
+        // this.getTotalVotes();
         initialRender = (
-          <div>
-            <div>
+          <styles.content>
+            <styles.pollName>
               {this.state.pollName}
-            </div>
-            <ul>
-              {this.state.pollOptions.map((option, index) =>
-                <VoteButton
-                  id={index}
-                  name={option.optionName}
-                  votes={option.optionVotes}
-                  onClick={this.handleVote}
-                  key={v4()}
-                />
-              )}
-            </ul>
-          </div>
+            </styles.pollName>
+            {this.state.pollOptions.map((option, index) =>
+              <VoteButton
+                totalVotes={this.state.totalVotes}
+                id={index}
+                name={option.optionName}
+                votes={option.optionVotes}
+                onClick={this.handleVote}
+                key={v4()}
+              />
+            )}
+          </styles.content>
         );
       }
     }
 
     return (
-      <styles.content>
+      <div>
         {initialRender}
-      </styles.content>
+      </div>
     );
   }
 }

@@ -16,8 +16,6 @@ const styles = {
     padding-top: 5%;
     flex-direction: column;
     align-items: center;
-    background: #CED3DC;
-    height: 100vh;
   `,
   NewPollText: styled.h1`
     font-size: 10rem;
