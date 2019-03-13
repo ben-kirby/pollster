@@ -21,6 +21,7 @@ WebFont.load({
 const styles = {
   generatedLink: {
     fontSize: '2rem',
+    textDecoration: 'none',
   },
   container: styled.div`
     padding-top: 5%;
@@ -132,11 +133,15 @@ class NewPoll extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.generateShortID();
-    this.setState({ formSubmitted: true });
+    event.preventDefault();
     const { dispatch } = this.props;
+    const newId = shortid.generate();
     let newOptions = [];
+
+    this.setState({ 
+      formSubmitted: true,
+      shortID: newId
+    });
     for (let index = 0; index < this.state.options.length; index++) {
       newOptions.push({
         optionName: document.getElementById(index).value,
@@ -146,8 +151,8 @@ class NewPoll extends React.Component {
     let newPollInfo = {
       name: e.target.name.value,
       options: newOptions,
-      id: this.state.shortID
-    };
+      id: newId
+    };    
     dispatch(addPoll(newPollInfo));
   }
 

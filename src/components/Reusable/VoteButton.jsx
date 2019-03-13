@@ -45,6 +45,7 @@ const styles = {
     border-left: 2px solid #CED3DC;
   `,
   optionText: styled.p`
+    padding-top: 4px;
     font-family: Josefin Sans;
     font-size: 1.2rem;
     color: #275DAD;
