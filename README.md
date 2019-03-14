@@ -4,22 +4,13 @@ Pollster is a web app that allows user to create and share simple polls. After c
 
 ## Setup
 
-_Coming to firebase soon_
+`https://pollster-d01ec.firebaseapp.com/#/`
 
 1. Clone from `https://github.com/ben-kirby/pollster.git`
 2. In parent directory, run `$ npm install; npm run start`
 3. In your browser, navigate to `localhost:8080`
 
 ## Structure
-
-### UI
-
-#### Main
-
-#### New Poll
-
-#### Existing Poll
-
 
 ### Componenet Tree
 
@@ -33,14 +24,14 @@ _Coming to firebase soon_
 - After creating a poll, users get a link to it along with the poll code.
 - If a user goes to a bad URL it will prompt them to either make a new poll or search for another one.
 - Polls are searchable by their ID.
+- Header for easier navigation.
+- Link generated on poll submission sends you to the polling page.
 
 ## Known Issues
 
 - No way for users to retreive a poll ID once a poll is made.
-- No navigation buttons. Users have to know the URL or use back/forward buttons.
 - Voting is not live updating. Have to refresh to see changes.
 - Users can vote as often as they want.
-- Link generated on poll submission doesnt go anywhere.
 
 ## What's Next
 
@@ -48,4 +39,4 @@ _Coming to firebase soon_
 - [x] Get votes to update in the database.
 - [x] Add UI/Styling
 - [x] Return a poll ID upon creation of a new poll.
-- [ ] Better navigation
+- [x] Better navigation
