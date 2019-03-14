@@ -49,7 +49,6 @@ const styles = {
     font-family: Josefin Sans;
     font-size: 1.2rem;
     color: #275DAD;
-
   `,
 
 };

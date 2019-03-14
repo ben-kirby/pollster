@@ -44,6 +44,7 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 100px;
   `,
   options: styled.p`
     font-size: 4rem;
@@ -51,17 +52,6 @@ const styles = {
     color: #ABA9C3;
     margin-bottom: 0px;
   `,
-  optionForm: {
-    marginTop: '5px',
-    border: 'none',
-    padding: '3%',
-    borderRadius: '25rem',
-    fontSize: '2.25rem',
-    boxShadow: 'inset 4px 4px 0 0 rgba(17, 17, 31, 0.25)',
-    textAlign: 'center',
-    backgroundColor: '#FCF6EF',
-    color: '#275DAD'
-  },
   buttonDiv: styled.div`
     display: flex;
     width: 100%;
@@ -138,7 +128,7 @@ class NewPoll extends React.Component {
     const newId = shortid.generate();
     let newOptions = [];
 
-    this.setState({ 
+    this.setState({
       formSubmitted: true,
       shortID: newId
     });
@@ -152,7 +142,7 @@ class NewPoll extends React.Component {
       name: e.target.name.value,
       options: newOptions,
       id: newId
-    };    
+    };
     dispatch(addPoll(newPollInfo));
   }
 
@@ -170,14 +160,6 @@ class NewPoll extends React.Component {
             />
             <styles.options><em>-options-</em></styles.options>
             <styles.container>
-              {this.state.options.map((option, index) =>
-                <InputField
-                  style={styles.optionForm}
-                  id={index}
-                  type='text'
-                  key={v4()}
-                />
-              )}
               <styles.buttonDiv>
                 <Button
                   style={styles.addButton}
@@ -191,6 +173,14 @@ class NewPoll extends React.Component {
                   text="Create New Poll"
                 />
               </styles.buttonDiv>
+              {this.state.options.map((option, index) =>
+                <InputField
+                  style={styles.optionForm}
+                  id={index}
+                  type='text'
+                  key={v4()}
+                />
+              )}
             </styles.container>
           </styles.pollForm>
         </styles.container>
@@ -198,7 +188,7 @@ class NewPoll extends React.Component {
     } else {
       console.log(this.state.shortID);
       initialRender = (
-        
+
         <div>
           <Link style={styles.generatedLink} to={`/${this.state.shortID}`}>Poll created! Here's your code: {this.state.shortID}</Link>
         </div>

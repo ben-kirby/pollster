@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import Main from './Main';
 import NewPoll from './NewPoll';
 import Poll from './Poll';
+import Header from './Header';
 
 const styles = {
   container: `
     
   `,
-}
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -18,13 +19,17 @@ class App extends React.Component {
     this.state = {};
   }
 
-  render(){
+  render() {
     return (
-      <Switch>
-        <Route exact path='/' component={Main} />
-        <Route path='/New' component={NewPoll} />
-        <Route path='/*' component={Poll} />
-      </Switch>);
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Main} />
+          <Route path='/New' component={NewPoll} />
+          <Route path='/*' component={Poll} />
+        </Switch>);
+      </div>
+    );
   }
 }
 
