@@ -5,7 +5,6 @@ import { getFirebasePoll, updatePoll } from '../actions/index';
 import { v4 } from 'uuid';
 import WebFont from 'webfontloader';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import VoteButton from '../components/Reusable/VoteButton';
 import Loading from '../assets/loading.svg';

@@ -1,9 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WebFont from 'webfontloader';
-import PollSearchForm from './Reusable/PollSearchForm';
 import NewOrExisting from './Reusable/NewOrExisting';
 
 WebFont.load({

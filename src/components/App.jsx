@@ -7,12 +7,6 @@ import NewPoll from './NewPoll';
 import Poll from './Poll';
 import Header from './Header';
 
-const styles = {
-  container: `
-    
-  `,
-};
-
 class App extends React.Component {
   constructor(props) {
     super(props);
