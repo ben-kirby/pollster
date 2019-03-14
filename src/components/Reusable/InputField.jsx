@@ -14,7 +14,7 @@ const styles = {
     background-color: #FCF6EF;
     color: #275DAD;
   `,
-}
+};
 
 function InputField(props) {
   return (

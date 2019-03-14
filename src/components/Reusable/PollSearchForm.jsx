@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const styles = {
   PollForm: styled.form`
@@ -26,6 +27,10 @@ function PollSearchForm(props) {
     </div>
   );
 }
+
+PollSearchForm.propTypes = {
+  onSubmit: PropTypes.func
+};
 
 
 export default PollSearchForm;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WebFont from 'webfontloader';
 import PollSearchForm from './PollSearchForm';
+import PropTypes from 'prop-types';
 
 WebFont.load({
   google: {
@@ -51,5 +52,9 @@ function NewOrExisting(props) {
     </styles.Container>
   );
 }
+
+NewOrExisting.propTypes = {
+  onSubmit: PropTypes.func,
+};
 
 export default NewOrExisting;

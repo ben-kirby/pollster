@@ -5,10 +5,9 @@ import { getFirebasePoll, updatePoll } from '../actions/index';
 import { v4 } from 'uuid';
 import WebFont from 'webfontloader';
 import styled from 'styled-components';
-
 import VoteButton from '../components/Reusable/VoteButton';
 import Loading from '../assets/loading.svg';
-import NewOrExisting from './Reusable/NewOrExisting'
+import NewOrExisting from './Reusable/NewOrExisting';
 
 WebFont.load({
   google: {
@@ -26,7 +25,6 @@ const styles = {
   `,
   Container: styled.div`
     background-color: #CED3DC;
-    height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -104,7 +102,7 @@ class Poll extends React.Component {
   }
 
   handlePollIdSubmit() {
-    event.preventDefault()
+    event.preventDefault();
     this.props.history.push('/' + document.getElementById('pollID').value);
     window.location.reload();
   }
@@ -120,7 +118,6 @@ class Poll extends React.Component {
 
   render() {
     let initialRender;
-
     if (this.state.pollSearched === false) {
       initialRender = (
         <styles.Container>
@@ -128,8 +125,6 @@ class Poll extends React.Component {
         </styles.Container>
       );
     } else {
-
-
       if (this.state.pollName === null) {
         initialRender = (
           <styles.Container>
@@ -140,10 +135,7 @@ class Poll extends React.Component {
               onSubmit={this.handlePollIdSubmit}
             />
           </styles.Container>
-        )
-        console.log('no poll found');
-
-
+        );
       } else {
         // this.getTotalVotes();
         initialRender = (
@@ -165,7 +157,6 @@ class Poll extends React.Component {
         );
       }
     }
-
     return (
       <div>
         {initialRender}
@@ -183,7 +174,8 @@ const mapStateToProps = state => {
 Poll.propTypes = {
   dispatch: PropTypes.func,
   pollInfo: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  history: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(Poll);

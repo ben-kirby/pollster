@@ -22,6 +22,8 @@ const styles = {
   generatedLink: {
     fontSize: '2rem',
     textDecoration: 'none',
+    fontFamily: 'Josefin Sans',
+    color: '#275DAD'
   },
   container: styled.div`
     padding-top: 5%;
@@ -186,7 +188,6 @@ class NewPoll extends React.Component {
         </styles.container>
       );
     } else {
-      console.log(this.state.shortID);
       initialRender = (
 
         <div>

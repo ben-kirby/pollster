@@ -21,7 +21,7 @@ class App extends React.Component {
           <Route exact path='/' component={Main} />
           <Route path='/New' component={NewPoll} />
           <Route path='/*' component={Poll} />
-        </Switch>);
+        </Switch>
       </div>
     );
   }

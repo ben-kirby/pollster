@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import WebFont from 'webfontloader';
 import NewOrExisting from './Reusable/NewOrExisting';
+import PropTypes from 'prop-types';
+
 
 WebFont.load({
   google: {
@@ -57,5 +59,9 @@ class Main extends React.Component {
     );
   }
 }
+
+Main.propTypes = {
+  history: PropTypes.object,
+};
 
 export default Main;

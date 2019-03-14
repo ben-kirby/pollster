@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WebFont from 'webfontloader';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 WebFont.load({
   google: {
@@ -63,6 +65,10 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  history: PropTypes.object,
+};
 
 
 
